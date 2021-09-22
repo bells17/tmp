@@ -1,0 +1,5 @@
+resources:
+- webhookconfig.yaml
+
+patchesStrategicMerge:
+- webhookcainjection_patch.yaml
