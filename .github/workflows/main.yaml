@@ -1,0 +1,21 @@
+name: "Main"
+on:
+  pull_request:
+  push:
+    branches:
+      - "main"
+jobs:
+  test:
+    name: "test"
+    runs-on: "ubuntu-18.04"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: "1.17"
+      - run: whoami
+      - run: sudo -E env PATH=${PATH} whoami
+      - run: id
+      - run: sudo -E env PATH=${PATH} id
+      - run: go run main.go
+      - run: sudo -E env PATH=${PATH} go run main.go
