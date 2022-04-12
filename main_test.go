@@ -10,5 +10,5 @@ func TestUID(t *testing.T) {
 	if uid != 0 {
 		t.Skip("run as root")
 	}
-	t.Log("run as root")
+	t.Log("not skip: run as root")
 }
