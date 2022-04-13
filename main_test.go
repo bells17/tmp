@@ -6,7 +6,7 @@ import (
 )
 
 func TestUID(t *testing.T) {
-	uid := os.Geteuid()
+	uid := os.Getuid()
 	if uid != 0 {
 		t.Skip("run as root")
 	}

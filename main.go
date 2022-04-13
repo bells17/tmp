@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Printf("uid: %d\n", os.Geteuid())
+	fmt.Printf("uid: %d\n", os.Getuid())
 }
