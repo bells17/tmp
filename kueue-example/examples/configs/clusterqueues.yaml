@@ -1,0 +1,66 @@
+---
+apiVersion: kueue.x-k8s.io/v1alpha1
+kind: ClusterQueue
+metadata:
+  name: cluster-total
+spec:
+  namespaceSelector: {} # match all.
+  resources:
+  - name: "cpu"
+    flavors:
+    - name: default
+      quota:
+        min: 6
+
+---
+apiVersion: kueue.x-k8s.io/v1alpha1
+kind: ClusterQueue
+metadata:
+  name: team-a-cq
+spec:
+  namespaceSelector: {}
+  cohort: team-ab
+  resources:
+  - name: "cpu"
+    flavors:
+    - name: arm
+      quota:
+        min: 3
+        max: 3
+    - name: x86
+      quota:
+        min: 0
+
+---
+apiVersion: kueue.x-k8s.io/v1alpha1
+kind: ClusterQueue
+metadata:
+  name: team-b-cq
+spec:
+  namespaceSelector: {}
+  cohort: team-ab
+  resources:
+  - name: "cpu"
+    flavors:
+    - name: arm
+      quota:
+        min: 3
+        max: 3
+    - name: x86
+      quota:
+        min: 0
+
+---
+apiVersion: kueue.x-k8s.io/v1alpha1
+kind: ClusterQueue
+metadata:
+  name: shared-cq
+spec:
+  namespaceSelector: {}
+  cohort: team-ab
+  resources:
+  - name: "cpu"
+    flavors:
+    - name: x86
+      quota:
+        min: 3

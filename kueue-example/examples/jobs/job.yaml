@@ -1,0 +1,42 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: sample-job-
+  annotations:
+    kueue.x-k8s.io/queue-name: main
+spec:
+  parallelism: 3
+  completions: 3
+  suspend: true
+  template:
+    spec:
+      containers:
+      - name: dummy-job
+        image: gcr.io/k8s-staging-perf-tests/sleep:latest
+        args: ["60s"]
+        resources:
+          requests:
+            cpu: "1"
+      restartPolicy: Never
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: sample2-job-
+  annotations:
+    kueue.x-k8s.io/queue-name: main
+spec:
+  parallelism: 3
+  completions: 3
+  suspend: true
+  template:
+    spec:
+      containers:
+      - name: dummy-job
+        image: gcr.io/k8s-staging-perf-tests/sleep:latest
+        args: ["60s"]
+        resources:
+          requests:
+            cpu: "2"
+      restartPolicy: Never

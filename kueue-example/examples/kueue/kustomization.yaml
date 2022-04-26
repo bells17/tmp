@@ -1,0 +1,14 @@
+namespace: kueue-system
+bases:
+- github.com/kubernetes-sigs/kueue/config/default
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: controller-manager
+      namespace: system
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/args/1
+        value: "--zap-log-level=3"
