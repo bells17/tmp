@@ -1,0 +1,4 @@
+resources:
+- clusterqueues.yaml
+- flavors.yaml
+- queues.yaml
